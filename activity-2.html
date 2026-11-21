@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Daily Tasks</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <style>
+        body {
+            background: #111827;
+            color: #e5e7eb;
+        }
+
+        h1,
+        h3 {
+            color: #f3f4f6;
+        }
+
+        .text-muted {
+            color: #9ca3af !important;
+        }
+
+        .card {
+            background: #1f2937;
+            border: 1px solid #374151;
+        }
+
+        .box {
+            background: #111827;
+            color: #d1d5db;
+            border: 1px solid #374151;
+        }
+
+        .btn-primary {
+            background: #374151;
+            border-color: #4b5563;
+        }
+
+        .btn-primary:hover,
+        .btn-primary:focus {
+            background: #4b5563;
+            border-color: #6b7280;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container py-4">
+
+        <h1 class="mb-1">Daily Tasks</h1>
+        <p class="text-muted mb-4">Sort, time, and label tasks.</p>
+
+        <!-- TOPIC 1 & 2: sort() and reverse() -->
+        <div class="card mb-4">
+            <div class="card-body">
+                <h3 class="card-title">Tasks</h3>
+
+                <button class="btn btn-primary mr-2" onclick="sortAZ()">A-Z</button>
+                <button class="btn btn-primary" onclick="sortZA()">Z-A</button>
+
+                <div id="taskResult" class="box p-3 mt-3 rounded"></div>
+            </div>
+        </div>
+
+        <!-- TOPIC 3: sort() with compare function -->
+        <div class="card mb-4">
+            <div class="card-body">
+                <h3 class="card-title">Time</h3>
+
+                <button class="btn btn-primary mr-2" onclick="sortShortest()">Short first</button>
+                <button class="btn btn-primary" onclick="sortLongest()">Long first</button>
+
+                <div id="timeResult" class="box p-3 mt-3 rounded"></div>
+            </div>
+        </div>
+
+        <!-- TOPIC 4: map() -->
+        <div class="card mb-4">
+            <div class="card-body">
+                <h3 class="card-title">Labels</h3>
+
+                <button class="btn btn-primary" onclick="addLabel()">Add labels</button>
+
+                <div id="labelResult" class="box p-3 mt-3 rounded"></div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        var tasks = ["Homework", "Breakfast", "Exercise", "Reading", "Packing Bag"];
+        var minutes = [30, 15, 20, 25, 10];
+
+        document.getElementById("taskResult").innerHTML =
+            "Tasks: " + tasks;
+
+        document.getElementById("timeResult").innerHTML =
+            "Minutes: " + minutes;
+
+        document.getElementById("labelResult").innerHTML =
+            "Click Add labels.";
+
+        function sortAZ() {
+            tasks.sort();
+            document.getElementById("taskResult").innerHTML = "A to Z: " + tasks;
+        }
+
+        function sortZA() {
+            tasks.sort();
+            tasks.reverse();
+            document.getElementById("taskResult").innerHTML = "Z to A: " + tasks;
+        }
+
+        function sortShortest() {
+            minutes.sort(function (a, b) { return a - b; });
+            document.getElementById("timeResult").innerHTML = "Short first: " + minutes;
+        }
+
+        function sortLongest() {
+            minutes.sort(function (a, b) { return b - a; });
+            document.getElementById("timeResult").innerHTML = "Long first: " + minutes;
+        }
+
+        function addLabel() {
+            var labelledMinutes = minutes.map(function (time) { return time + " minutes"; });
+            document.getElementById("labelResult").innerHTML = "Times: " + labelledMinutes;
+        }
+    </script>
+
+</body>
+
+</html>
