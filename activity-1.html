@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My Spider-Man Power Cards</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #e8efff 0%, #ffd9dc 100%);
+      text-align: center;
+      padding: 30px;
+    }
+
+    h1 {
+      color: #cc0000;
+      text-shadow: 2px 2px 0 #113b9a;
+    }
+
+    p {
+      color: #17233b;
+    }
+
+    button {
+      background-color: #cc0000;
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .card-container {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 25px;
+      flex-wrap: wrap;
+    }
+
+    .hero-card {
+      background-color: white;
+      border: 3px solid #1663c7;
+      box-shadow: 0 6px 14px rgba(17, 59, 154, 0.25);
+      border-radius: 12px;
+      width: 220px;
+      padding: 18px;
+    }
+
+    .hero-name {
+      font-size: 22px;
+      font-weight: bold;
+      color: #b80000;
+    }
+
+    .hero-power {
+      color: #113b9a;
+      font-weight: bold;
+    }
+
+    .hero-mission {
+      color: #273552;
+      font-size: 14px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>My Spider-Man Power Cards</h1>
+
+  <p>
+    Click the button to create Spider-Man heroes using JavaScript classes.
+  </p>
+
+  <button onclick="showHeroes()">Show Spider Heroes</button>
+
+  <div class="card-container" id="heroCards"></div>
+
+  <script>
+    class Superhero {
+
+      constructor(name, power, mission) {
+
+        this.name = name;
+        this.power = power;
+        this.mission = mission;
+      }
+
+      describeHero() {
+        return "<div class='hero-card'>" +
+               "<p class='hero-name'>" + this.name + "</p>" +
+               "<p class='hero-power'>Power: " + this.power + "</p>" +
+               "<p class='hero-mission'>Mission: " + this.mission + "</p>" +
+               "</div>";
+      }
+    }
+
+    function showHeroes() {
+
+      let hero1 = new Superhero(
+        "Spider-Man",
+        "Web-slinging and spider sense",
+        "Swing across the city and protect innocent people."
+      );
+
+      let hero2 = new Superhero(
+        "Miles Morales",
+        "Bio-electric venom strikes",
+        "Use spider powers to defend Brooklyn from danger."
+      );
+
+      let hero3 = new Superhero(
+        "Spider-Gwen",
+        "Agility and interdimensional travel",
+        "Leap into action and protect her home dimension."
+      );
+
+      let hero4 = new Superhero(
+        "Spider-Woman",
+        "Wall-crawling and venom blasts",
+        "Fight villains and keep the city safe."
+      );
+
+      document.getElementById("heroCards").innerHTML =
+        hero1.describeHero() +
+        hero2.describeHero() +
+        hero3.describeHero() +
+        hero4.describeHero();
+    }
+  </script>
+
+</body>
+</html>
